@@ -1,0 +1,27 @@
+@import "foundation";
+
+.one { @include grid-column(1); }
+.two { @include grid-column(2); }
+.three { @include grid-column(3); }
+.four { @include grid-column(4); }
+.five { @include grid-column(5); }
+.six { @include grid-column(6); }
+.seven { @include grid-column(7); }
+.eight { @include grid-column(8); }
+.nine { @include grid-column(9); }
+.ten { @include grid-column(10); }
+.eleven { @include grid-column(11); }
+.twelve { @include grid-column(12); }
+
+.table {
+	p { margin: 1em auto; }
+
+	span {
+		min-width: 25%;
+		max-width: 75%;
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+ul li { margin-bottom: 1em; }
