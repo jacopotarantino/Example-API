@@ -15,15 +15,64 @@ html(lang="en")
 		
 		.row
 			.twelve
-				p The Example API is a free service providing example data for API calls for when you have application logic you need to test but you don't have an API prepared server-side to respond to your queries.
+				p.panel The Example API is a free service providing example data for API calls for when you have application logic you need to test but you don't have an API prepared server-side to respond to your queries. It is a great resource to make sure that your AJAX calls are functioning properly or your Cross-Domain scripts are getting the proper responses.
 				
 				h2 How to use
 				
-				p Send your queries and you'll get data back.
+				p.panel
+					| For <b>GET requests</b>, just send your queries and you'll get data back. <br /><br />
+					| For <b>other HTTP request methods</b>, send to the URL /dataType/method. So, for example, if you wanted to PUT a JSON object, you would make your request to <a href="http://exampleapi.com/json/put">http://exampleapi.com/json/put</a>. <br /><br />
+					| If you need to test against a certain <b>status response code</b> like a 403: Forbidden, send your request to /status/responseCode. For example, <a href="http://exampleapi.com/status/201">http://exampleapi.com/status/201</a>
+				
 				
 				h2 Entry points
 				
-				ul
-					li json
-					li xml
-					li jsonp
+				.table.panel
+					p
+						span 
+							b Data Type
+						span 
+							b Function
+					p
+						span <a href="/cmd">/cmd</a>
+						span Honestly, I couldn't even find an example of this one so it's considered <a href="/obsolete">obsolete</a>.
+					p
+						span <a href="/css">/css</a>
+						span Serves an example of a CSS file.
+					p
+						span <a href="/csv">/csv</a>
+						span Serves an example of a post in a CSV format.
+					p
+						span <a href="/html">/html</a>
+						span Serves an example of a post in an HTML format.
+					p
+						span <a href="/javascript">/javascript</a>
+						span This format is easily findable but the MIME type is considered <a href="/obsolete">obsolete</a> so this will not function.
+					p
+						span <a href="/json">/json</a>
+						span Serves an example of a post in a JSON format. This is hopefully the one you're querying most often as it's the most widely used today and probably the easiest to follow.
+					p
+						span <a href="/jsonp">/jsonp</a>
+						span Serves an example of a post in a JSONP format. Please note that JSONP requires a callback function to be specified. For GET requests, please do so using "?callback=YourCallbackFunction".
+					p
+						span <a href="/plain">/plain</a>
+						span Serves an example of a post in a plaintext format just in case you want it that way.
+					p
+						span <a href="/vcard">/vcard</a>
+						span An example of a text/vcard mimetype since it's another textual format and ... why not?
+					p
+						span <a href="/xml">/xml</a>
+						span Serves an example of a post in an XML format. If you're using this format, please try to convert to JSON. XML is far too much markup for simple data and doesn't really carry any advantages.
+					
+					
+				h2 Methods Supported
+
+				ul.panel
+					li GET - Should return a fake blog post or example data depending on the type you request.
+					li HEAD - Should just return normal headers. No body. If you require a specific status code, please use the /status/responseCode method.
+					li OPTIONS - Has anybody used this ever? Please send me a message or a pull request if you have a way of implementing this in node.
+					li PUT (coming soon)
+					li POST (coming soon)
+					li PATCH (coming soon)
+					li DELETE (coming soon)
+					
