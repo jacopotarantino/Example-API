@@ -1,3 +1,4 @@
+@import "normalize";
 @import "foundation";
 
 .one { @include grid-column(1); }
