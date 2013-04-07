@@ -171,4 +171,7 @@ app.patch('/:dataType', function(req,res,next){
 **/
 
 
-server.listen(80);
+var port = process.env.PORT || 80;
+server.listen(port, function() {
+  console.log("Listening on " + port);
+});
