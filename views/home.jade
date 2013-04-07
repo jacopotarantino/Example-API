@@ -20,9 +20,17 @@ html(lang="en")
 				h2 How to use
 				
 				p.panel
-					| For <b>GET requests</b>, just send your queries and you'll get data back. <br /><br />
-					| For <b>other HTTP request methods</b>, send to the URL /dataType/method. So, for example, if you wanted to PUT a JSON object, you would make your request to <a href="http://exampleapi.com/json/put">http://exampleapi.com/json/put</a>. <br /><br />
-					| If you need to test against a certain <b>status response code</b> like a 403: Forbidden, send your request to /status/responseCode. For example, <a href="http://exampleapi.com/status/201">http://exampleapi.com/status/201</a>
+					| For <b>GET requests</b>, just send your queries to the appropriate URL named after the data type you want and you'll get data back. <br /><br />
+					| For <b>other HTTP request methods</b>, send to the URL <code>/&lt;dataType&gt;</code> using your method of choice. So, for example, if you wanted to PUT a JSON object, you would make your request similar to <br />
+					| <code>curl -X PUT -d @filename http://exampleapi.com/json --header  "Content-Type:application/json"</code>.
+					| <br /> or <br />
+					| <code>$.ajax({ <br />
+					| &nbsp;&nbsp;&nbsp;&nbsp;url: 'http://exampleapi.com/json', <br />
+					| &nbsp;&nbsp;&nbsp;&nbsp;method: 'PUT', <br />
+					| &nbsp;&nbsp;&nbsp;&nbsp;data: {"json": "object"} <br />
+					| });</code>. <br />
+					| as a response, you should receive a status code an an object appropriate to the method and data type in the request. This will never produce an error unless you specifically request it using the following: <br /><br />
+					| If you need to test against a certain <b>status response code</b> like a 403: Forbidden, send your request to /status/responseCode. For example, <a href="http://exampleapi.com/status/403">http://exampleapi.com/status/403</a>
 				
 				
 				h2 Entry points
@@ -70,9 +78,14 @@ html(lang="en")
 				ul.panel
 					li GET - Should return a fake blog post or example data depending on the type you request.
 					li HEAD - Should just return normal headers. No body. If you require a specific status code, please use the /status/responseCode method.
-					li OPTIONS - Has anybody used this ever? Please send me a message or a pull request if you have a way of implementing this in node.
+					li OPTIONS - I could use some help learning a way of implementing this in node.js.
 					li PUT (coming soon)
 					li POST (coming soon)
 					li PATCH (coming soon)
 					li DELETE (coming soon)
-					
+					li TRACE (coming soon)
+				
+				h2 Contributing
+				
+				p.panel
+					| This is an open-source project. It runs on Node.js using Express and Jade. The source code can be found at <a href="https://github.com/jacopotarantino/Example-API">it's repo on GitHub</a>. Please feel free to submit suggestions and patches there.
