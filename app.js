@@ -103,7 +103,7 @@ app.get('/:dataType', function(req,res,next){
 		case 'jsonp':
 			if(req.query.callback) {
 				res.set('Content-Type', 'text/jsonp');
-				res.send(req.query.callback + '(' + JSON.stringify(exampleObject) + ')');
+				res.send( escapeHtml(req.query.callback) + '(' + JSON.stringify(exampleObject) + ')');
 			}
 			else {
 				res.send(400, 'You must specify a callback by adding "?callback=exampleCBFunction" to the query');
@@ -164,6 +164,23 @@ app.patch('/:dataType', function(req,res,next){
  * Application Logic.
 **/
 
+
+var entityMap = {
+	"&": "&amp;"
+	, "<": "&lt;"
+	, ">": "&gt;"
+	, '"': "&quot;"
+	, "'": "&#39;"
+	, "/": "&#x2F;"
+	, ";": "&#59;"
+	, "\\": "&#92;"
+};
+
+function escapeHtml(string) {
+	return String(string).replace(/[&<>"'\/;\\]/g, function (s) {
+		return entityMap[s];
+	});
+}
 
 
 /**
